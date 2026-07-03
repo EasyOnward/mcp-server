@@ -1,0 +1,56 @@
+{
+  "name": "@easyonward/mcp-server",
+  "mcpName": "com.easyonward/mcp-server",
+  "version": "0.2.0",
+  "description": "Read-only Model Context Protocol server for EasyOnward \u2014 check passport visa, entry, and transit requirements with official government sources.",
+  "license": "MIT",
+  "author": "EasyOnward",
+  "homepage": "https://easyonward.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EasyOnward/mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EasyOnward/mcp-server/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "bin": {
+    "easyonward-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "tsc",
+    "prepublishOnly": "npm run build && npm test",
+    "start": "node dist/index.js",
+    "test": "node --test --import tsx test/*.test.ts",
+    "start:http": "node dist/http.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "visa",
+    "travel",
+    "easyonward",
+    "passport"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}
