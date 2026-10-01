@@ -1,0 +1,25 @@
+# Smithery listing manifest for the EasyOnward MCP server.
+# https://smithery.ai/docs
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      easyonwardApiBase:
+        type: string
+        title: EasyOnward API base URL
+        description: >-
+          Base URL for the EasyOnward public API. Defaults to the production
+          host. Override to point at a dev/staging environment for testing.
+        default: https://easyonward.com/api/v1
+    required: []
+  commandFunction: |-
+    (config) => ({
+      command: 'npx',
+      args: ['-y', '@easyonward/mcp-server'],
+      env: config.easyonwardApiBase
+        ? { EASYONWARD_API_BASE: config.easyonwardApiBase }
+        : {}
+    })
+  exampleConfig:
+    easyonwardApiBase: https://easyonward.com/api/v1
